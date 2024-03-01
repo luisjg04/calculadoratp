@@ -81,6 +81,15 @@ public class Calculadora extends JFrame {
 			} else { // Comprobar si es un num o op
 				String lastNum = expression.getText().split(Pattern.quote(lastOp))[1];
 				double res = this.exec(firstNum, lastNum, lastOp);
+				firstNum = ""+res;
+				
+				if(e.getActionCommand() == "=") {
+					expression.setText(""+res);
+					lastOp = "";
+				} else {
+					expression.setText(""+res+e.getActionCommand());
+					lastOp = e.getActionCommand();
+				}
 			}
 			
 		});
